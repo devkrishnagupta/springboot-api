@@ -6,6 +6,7 @@ import net.javaguides.springboot.service.DepartmentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
@@ -18,6 +19,13 @@ public class DepartmentController {
     private DepartmentService departmentService;
 
     private final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
+
+    @Value("${welcome.message}")
+    private String welcomeMessage;
+    @GetMapping("/welcome")
+    public String welcomeMessage(){
+        return welcomeMessage;
+    }
     @PostMapping
     public Department saveDepartment(@Valid @RequestBody Department department){
         return departmentService.saveDepartment(department);
