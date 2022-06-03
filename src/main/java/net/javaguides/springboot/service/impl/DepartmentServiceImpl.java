@@ -1,5 +1,6 @@
 package net.javaguides.springboot.service.impl;
 
+import net.javaguides.springboot.exception.DepartmentNotFoundException;
 import net.javaguides.springboot.model.Department;
 import net.javaguides.springboot.repository.DepartmentRepository;
 import net.javaguides.springboot.service.DepartmentService;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
@@ -26,8 +28,13 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department fetchDepartmentById(Long departmentId) {
-        return departmentRepository.findById(departmentId).get();
+    public Department fetchDepartmentById(Long departmentId) throws DepartmentNotFoundException {
+        Optional<Department> department = departmentRepository.findById(departmentId);
+        if (!department.isPresent()){
+            throw new DepartmentNotFoundException("Department Not Available");
+        }else{
+            return department.get();
+        }
     }
 
     @Override

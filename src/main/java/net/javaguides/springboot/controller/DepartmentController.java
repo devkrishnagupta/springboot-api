@@ -1,5 +1,6 @@
 package net.javaguides.springboot.controller;
 
+import net.javaguides.springboot.exception.DepartmentNotFoundException;
 import net.javaguides.springboot.model.Department;
 import net.javaguides.springboot.service.DepartmentService;
 import org.slf4j.Logger;
@@ -29,7 +30,7 @@ public class DepartmentController {
     }
 
     @GetMapping("{id}")
-    public Department fetchDepartmentById( @PathVariable("id") Long departmentId){
+    public Department fetchDepartmentById( @PathVariable("id") Long departmentId) throws DepartmentNotFoundException {
         LOGGER.info("Inside the get departments by id");
         return departmentService.fetchDepartmentById(departmentId);
     }
