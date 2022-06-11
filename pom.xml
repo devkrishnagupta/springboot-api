@@ -62,7 +62,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-<!--	<packaging>war</packaging>-->
 	<build>
 		<plugins>
 			<plugin>
@@ -77,19 +76,6 @@
 						</exclude>
 					</excludes>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.4</version>
-<!--				<configuration>-->
-<!--					<webResources>-->
-<!--						<resource>-->
-<!--							&lt;!&ndash; this is relative to the pom.xml directory &ndash;&gt;-->
-<!--							<directory>src/main/resources/My-Web-Project/web</directory>-->
-<!--						</resource>-->
-<!--					</webResources>-->
-<!--				</configuration>-->
 			</plugin>
 		</plugins>
 		<finalName>docker-jenkins-integration-sample</finalName>
